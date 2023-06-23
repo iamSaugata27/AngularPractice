@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <ol>
+        <li>
+          Add a button which may only be clicked if the username is not an empty
+          string
+        </li>
+        <li>
+          Upon clicking the button, the username should be reset to an empty
+          string
+        </li>
+      </ol>
+      <hr />
+      <input type="text" class="form-control" [(ngModel)]="username" />
+      <p>{{ username }}</p>
+      <button
+        class="btn btn-primary"
+        (click)="username = ''"
+        [disabled]="username === ''"
+      >
+        Reset User
+      </button>
+      <hr />
+      <button class="btn btn-primary" (click)="onToggleDetails()">
+        Display Details
+      </button>
+      <p *ngIf="showSecret">Hidden Word!!</p>
+      <div
+        *ngFor="let logItem of logs; let indx = index"
+        [ngStyle]="{
+          backgroundColor: indx % 2 == 0 ? 'blue' : 'transparent'
+        }"
+        t
+        [ngClass]="{ 'white-text': indx % 2 == 0 }"
+      >
+        {{ logItem }}
+      </div>
+    </div>
+  </div>
+</div>
